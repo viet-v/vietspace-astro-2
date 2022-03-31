@@ -1,8 +1,9 @@
 ---
 // Style Imports
-import '../styles/main.css';
+// import '../styles/main.css';
 // Component Imports
-import MainLayout from '../layouts/MainLayout.astro';
+import HeaderLayout from '../layouts/HeaderLayout.astro';
+import FooterLayout from '../layouts/FooterLayout.astro';
 // You can import components from any supported Framework here!
 import About from '../components/About.jsx';
 import Hero from '../components/Hero.jsx';
@@ -12,16 +13,30 @@ import Skills from '../components/Skills.jsx';
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-let title = 'My Astro Site';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
-<MainLayout title="Viet V. - Frontend Developer">
-	<Hero client:visible />
-	<Projects client:visible />
-	<Skills client:visible />
-	<About client:visible />
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Viet V. - Frontend Developer</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://kit.fontawesome.com/38863ae954.js" defer></script>
+</head>
+<body>
+	
+	<HeaderLayout></HeaderLayout>
+	<main>
+		<Hero client:load></Hero>
+		<Projects client:load></Projects>
+		<Skills client:load></Skills>
+		<About client:load></About>
+	</main>
+	<FooterLayout></FooterLayout>
 
 	<script>		// JavaScript for navigation
 		const navBars = document.getElementById("nav-bars");
@@ -93,4 +108,5 @@ let title = 'My Astro Site';
 			introduce.style.right = introRightValue - value + 'px';
 		})
 	</script>
-</MainLayout>
+</body>
+</html>
